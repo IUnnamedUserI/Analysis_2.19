@@ -9,7 +9,7 @@ def tree(path, level, max_levels, show_hidden):
     """
     if level > max_levels:
         return
-    
+
     for element in os.listdir(path):
         if not show_hidden and element.startswith('.'):
             continue
@@ -56,22 +56,21 @@ def main():
     args = parser.parse_args()
 
     if args.author is None:
-        print(f'> Автор работы: Иващенко О.А.\n')
+        print("> Автор работы: Иващенко О.А.\n")
         return
 
     path = os.path.abspath(args.directory)
     if not os.path.exists(path):
         print("Указанного каталога не существует")
         return
-    
+
     if not os.path.isdir(path):
         print(f"Ошибка: {path} - не каталог")
         return
-    
+
     print(f'Список файлов в каталоге {path}')
     tree(path, 0, args.level, args.all)
 
 
 if __name__ == "__main__":
     main()
-    
